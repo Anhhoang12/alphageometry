@@ -20,10 +20,12 @@ set -x
 virtualenv -p python3 .
 source ./bin/activate
 
-
+pip install --require-hashes -r requirements.txt
 DATA=ag_ckpt_vocab
 
 MELIAD_PATH=meliad_lib/meliad
+mkdir -p meliad_lib/meliad
+git clone https://github.com/google-research/meliad meliad_lib/meliad
 export PYTHONPATH=$PYTHONPATH:$MELIAD_PATH
 
 DDAR_ARGS=(
